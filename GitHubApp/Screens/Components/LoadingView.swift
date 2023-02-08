@@ -22,17 +22,19 @@ final class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubviews() {
-        
+    private func addSubviews() {
         addSubview(activityIndicatorView)
     }
     
-    func configureConstraints() {
-        
+    private func configureConstraints() {
         NSLayoutConstraint.activate([
-        
             activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
+    
+    func startAnimating() {
+        activityIndicatorView.startAnimating()
+    }
+
 }
