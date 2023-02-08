@@ -9,6 +9,17 @@ final class LoadingView: UIView {
         return view
     }()
     
+    private lazy var descriptionLabel: UILabel = {
+      
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Loading…"
+        label.font = .systemFont(ofSize: 21, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
     init() {
         super.init(frame: .zero)
         
@@ -22,17 +33,23 @@ final class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubviews() {
-        
+    private func addSubviews() {
         addSubview(activityIndicatorView)
+        addSubview(descriptionLabel)
     }
     
-    func configureConstraints() {
-        
+    private func configureConstraints() {
         NSLayoutConstraint.activate([
-        
             activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            
+            descriptionLabel.bottomAnchor.constraint(equalTo: activityIndicatorView.topAnchor, constant: -16),
+            descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
+    
+    func startAnimating() {
+        activityIndicatorView.startAnimating()
+    }
+
 }
