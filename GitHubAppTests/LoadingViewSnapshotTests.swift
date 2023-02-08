@@ -15,7 +15,9 @@ class LoadingViewSnapshotTests: XCTestCase {
         
         let loadingView = LoadingView()
         
-        assertSnapshot(matching: loadingView,
-                       as: .image(size: CGSize(width: 350, height: 700)))
+        assertSnapshot(
+            matching: loadingView,
+            as: .image(size: CGSize(width: 350, height: 700))
+        )
     }
 }
